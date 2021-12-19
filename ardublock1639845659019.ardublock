@@ -1,0 +1,118 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="arduino_setup" id="Nj!_:~AsdSa(=%WZEcV)" x="182" y="101">
+    <statement name="MySetup">
+      <block type="lcdi2c_setuprus" id="/twr@+5!pEc0m8$95?~?">
+        <field name="NAME">0x27</field>
+        <value name="COLUMNS">
+          <shadow type="math_number" id=",C]5?xRn^NA]%o#)Zo_l">
+            <field name="NUM">16</field>
+          </shadow>
+        </value>
+        <value name="ROWS">
+          <shadow type="math_number" id="9H]?E5K?]Y:b7TZx(vA3">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+    <statement name="MyLoop">
+      <block type="variables_set_init" id="r5,jceWV#$t.1,a=$_!@">
+        <field name="VAR">temp</field>
+        <field name="VARIABLE_SETTYPE_TYPE">LARGE_NUMBER</field>
+        <value name="VALUE">
+          <block type="dht_sensor" id="bpGr?Ue0mD1KMa|.O6$z">
+            <field name="OUTPUT_TYPE">0</field>
+            <field name="OUTPUT_VALUE">0</field>
+            <value name="PIN_DHT">
+              <shadow type="math_number" id="PK4rMuC?;I=I]AwoD0Nm">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set_init" id="o0(NNs:Y]jFu;rbZ1w+.">
+            <field name="VAR">hum</field>
+            <field name="VARIABLE_SETTYPE_TYPE">LARGE_NUMBER</field>
+            <value name="VALUE">
+              <block type="dht_sensor" id="]Pv0T?;1(cfZkgD6]W$X">
+                <field name="OUTPUT_TYPE">0</field>
+                <field name="OUTPUT_VALUE">1</field>
+                <value name="PIN_DHT">
+                  <shadow type="math_number" id="-v-0k)aw83nR_K`]Hax5">
+                    <field name="NUM">2</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="lcdi2c_setcursor" id="FEgN]Y/WlzAp-Psz-}*M">
+                <value name="column">
+                  <shadow type="math_number" id="M2b!o+sBqCe-Bz0;klN$">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="row">
+                  <shadow type="math_number" id="*:OE(c4wt6GK3y7Yi~}0">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="texttoprint">
+                  <shadow type="text" id="3(:s|?Q;tE`eV`KSsN#$">
+                    <field name="TEXT">ArduBlock</field>
+                  </shadow>
+                  <block type="text_join" id="bFk]?Ql/HHw{PI`ZdA;6">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="variables_get" id="58LCa`#=hi8RVjEe04e4">
+                        <field name="VAR">temp</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="text" id="{fRp.bn0t-y,1+40t~_{">
+                        <field name="TEXT">ArduBlock</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="lcdi2c_setcursor" id="Byj#5r:oukO(lNBX?aew">
+                    <value name="column">
+                      <shadow type="math_number" id="=%aomj.aYHJbCSPK-pU{">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="row">
+                      <shadow type="math_number" id="D.`}8D^BxPHIalbkr*LZ">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                    <value name="texttoprint">
+                      <shadow type="text" id="NU2c|9Bl#Zji-{fVWbbk">
+                        <field name="TEXT">ArduBlock</field>
+                      </shadow>
+                      <block type="text_join" id="(H,+~c[Wj72AsXwl27j{">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id=":+FgcJ/Leya0vUV~H5iR">
+                            <field name="TEXT">Vlhkost: </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="+W5#Mnqm^v5YH]`MA$e|">
+                            <field name="VAR">hum</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
